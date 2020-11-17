@@ -26,3 +26,8 @@ class LinkedList:
             print(f"{curr_node.data} ->", end="")
             curr_node = curr_node.next
         print("")
+    def remove(self, value):
+        curr_node = self.__head
+        while curr_node != value and curr_node.next != None:
+            curr_node = curr_node.next
+        if curr_node.data == value:
