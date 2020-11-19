@@ -23,11 +23,42 @@ class LinkedList:
     def transversal(self):      # Recorrido de toda la lista y lo imprime
         curr_node = self.__head
         while curr_node != None:
-            print(f"{curr_node.data} ->", end="")
+            print(f"{curr_node.data} -> ", end="")
             curr_node = curr_node.next
         print("")
+
     def remove(self, value):
         curr_node = self.__head
-        while curr_node != value and curr_node.next != None:
+        if self.__head.data == value:       # Si se quiere eliminar el head
+            self.__head = self.__head.next  # Head se vuelve el siguiente nodo
+        else:
+            anterior = None
+            while curr_node.data != value and curr_node.next != None:
+                anterior = curr_node
+                curr_node = curr_node.next
+            if curr_node.data == value:
+                #print("Actual: ", anterior.data)
+                anterior.next = curr_node.next
+            else:
+                print("El dato no existe en la lista")
+
+    def preppend(self, value):
+        nuevo = Nodo(value, self.__head)
+        self.__head = nuevo
+
+    def tail(self):
+        curr_node = self.__head
+        while curr_node.next != None:
             curr_node = curr_node.next
-        if curr_node.data == value:
+        return curr_node
+
+    def get(self, position=None):   # Por defecto regresa el último
+        contador = 0
+        dat = None
+        if position == None:
+            dat = self.tail().data
+        else:
+            pass        # Pass se utiliza para rellenar "No hagas nada"
+        return dat
+
+#    def add_before(reference_value, value):
