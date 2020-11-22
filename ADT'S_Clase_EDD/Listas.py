@@ -52,13 +52,20 @@ class LinkedList:
             curr_node = curr_node.next
         return curr_node
 
-    def get(self, position=None):   # Por defecto regresa el último
-        contador = 0
-        dat = None
-        if position == None:
-            dat = self.tail().data
+    def get(self , position=None):#por defecto regrese el ultimo
+        count=0
+        dat=None
+        if position == None :
+            dat=self.tail().data
         else:
-            pass        # Pass se utiliza para rellenar "No hagas nada"
+            curr_node = self.__head
+            while count != position and curr_node.next != None:
+                curr_node = curr_node.next
+                count += 1
+            if(count==position):
+                dat = curr_node.data
+            else:
+                dat = "ERROR: Esa posición no existe en la lista"
         return dat
 
 #    def add_before(reference_value, value):
