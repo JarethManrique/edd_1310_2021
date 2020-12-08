@@ -1,6 +1,6 @@
 class Array2D:
 
-    def __init__(self, rows, cols, value):
+    def __init__(self,rows, cols, value):
         self.__cols = cols
         self.__rows = rows
         self.__array=[[value for x in range(self.__cols)] for y in range(self.__rows)]

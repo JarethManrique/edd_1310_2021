@@ -5,12 +5,13 @@ class Stack:
     def is_empty(self):
         return len(self.__data) == 0
 
-    def length(self):
+    def lenght(self):
         return len(self.__data)
 
     def pop(self):
         if self.is_empty():
-            print("Pila vacía")
+            print('Pila vacía')
+
         else:
             return self.__data.pop()
 
@@ -18,10 +19,11 @@ class Stack:
         self.__data.append(value)
 
     def peek(self):
-        return self.__data [len(self.__data) -1]
+        return self.__data[len(self.__data)-1]
 
     def to_string(self):
-        print(" ----- ")
+        print('-------')
         for item in self.__data[::-1]:
-            print(f" | {item} | ")
-            print(" ----- ")
+            print(f'|  {item}  |')
+            print('-------')
+        print('\n')
