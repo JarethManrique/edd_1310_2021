@@ -80,12 +80,20 @@ class LaberintoADT:
             self.set_previa( actual)
             self.__camino.push( (actual[0]-1,actual[1]) )
         # buscar derecha
-        elif 1==0 :
-            pass
+        elif actual[1]-1 != -1 \
+        and self.__laberinto.get_item(actual[0],actual[1]+1) == '0' \
+        and self.get_previa() != (actual[0],actual[1]+1)  \
+        and self.__laberinto.get_item(actual[0],actual[1]+1) != 'X':
+            self.set_previa( actual)
+            self.__camino.push( ( actual[0],actual[1]+1 ) )
 
         # buscar abajo
-        elif 1 == 0 :
-            pass
+        elif actual[0]-1 != -1 \
+        and self.__laberinto.get_item(actual[0]+1,actual[1]) == '0' \
+        and self.get_previa() != (actual[0]+1,actual[1])  \
+        and self.__laberinto.get_item(actual[0]+1,actual[1]) != 'X':
+            self.set_previa( actual)
+            self.__camino.push( (actual[0]+1,actual[1]) )
         else:
             self.__laberinto.set_item( actual[0] , actual[1] ,'X' )
             self.__previa = actual
