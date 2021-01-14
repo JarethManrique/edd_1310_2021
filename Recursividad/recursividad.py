@@ -28,4 +28,4 @@ def main3():
         print(str(fibonacci(num)) + ",", end="")
         print()
 
-main3()
+main2()
