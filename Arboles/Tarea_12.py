@@ -4,45 +4,43 @@ class NodoArbol:
         self.left = left
         self.right = right
 
-def preOrden(leaf):
+def preFija(leaf):
     if leaf:
         print(leaf.data, end=" --> ")
-        preOrden(leaf.left)
-        preOrden(leaf.right)
+        preFija(leaf.left)
+        preFija(leaf.right)
 
-def inOrden(leaf):
+def postFija(leaf):
     if leaf:
-        inOrden(leaf.left)
-        print(leaf.data, end=" --> ")
-        inOrden(leaf.right)
-
-
-def postOrden(leaf):
-    if leaf:
-        postOrden(leaf.left)
-        postOrden(leaf.right)
+        postFija(leaf.left)
+        postFija(leaf.right)
         print(leaf.data, end=" --> ")
 
+def inFija(leaf):
+    if leaf:
+        inFija(leaf.left)
+        print(leaf.data, end=" --> ")
+        inFija(leaf.right)
 
 def main1():
     arbol = NodoArbol('+', NodoArbol('-', NodoArbol('5'), NodoArbol('4')), NodoArbol('*', NodoArbol('3'), NodoArbol('2')) )
     print("\n--------ARBOL #1--------")
     print("\nIn Order:")
-    inOrden(arbol)
+    inFija(arbol)
     print("\n\nPost Orden:")
-    postOrden(arbol)
+    postFija(arbol)
     print("\n\nPre Order:")
-    preOrden(arbol)
+    preFija(arbol)
 
 def main2():
     arbol = NodoArbol(40, NodoArbol(30, NodoArbol(25), NodoArbol(35)), NodoArbol(50, NodoArbol(45), NodoArbol(60)) )
     print("\n\n--------ARBOL #2--------")
     print("\nIn Order:")
-    inOrden(arbol)
+    inFija(arbol)
     print("\n\nPost Orden:")
-    postOrden(arbol)
+    postFija(arbol)
     print("\n\nPre Order:")
-    preOrden(arbol)
+    preFija(arbol)
 
 main1()
 main2()
