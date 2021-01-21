@@ -39,13 +39,56 @@ class BinarySearchTree:
             print(nodo.data, end=", ")
             self.__recorrido_in(nodo.right)
 
+    def __recorrido_pos(self, nodo):
+        if nodo:
+            self.__recorrido_pos(nodo.left)
+            self.__recorrido_pos(nodo.right)
+            print(nodo.data, end=", ")
+
+    def __recorrido_pre(self, nodo):
+        if nodo:
+            print(nodo.data, end=", ")
+            self.__recorrido_pre(nodo.left)
+            self.__recorrido_pre(nodo.right)
+
     def transversal(self,format="inorden"):
         if format == "inorden":
+            print("inorden")
             self.__recorrido_in(self.__root)
         elif format == "preorden":
-            print("Recorrido en pre")
+            print("preorden")
+            self.__recorrido_pre(self.__root)
         elif format == "posorden":
-            print("Recorrido posorden")
+            print("posorden")
+            self.__recorrido_pos(self.__root)
         else:
             print("Error, formato incompatible")
         print()
+
+    def search(self, value):
+        if self.__root == None:
+            return None
+        else:
+            return self.__search(self.__root, value)
+
+    def __search(self, nodo, value):
+        if nodo == None: # Vacío?
+            return None
+        elif nodo.data == value:
+            print("Encontrado")
+            return nodo
+        elif value < nodo.data:
+            return self.__search(nodo.left, value)
+        else:
+            return self.__search(nodo.right, value)
+
+    def remove(self, value):
+        encontrado = self.search(value)
+        # CASO 1
+        if encontrado.left == None and encontrado.right == None:
+            print("Eliminando ", encontrado.data)
+            encontrado = None
+        # CASO 2
+        elif (encontrado.left != None and encontrado.right == None) or \
+             (encontrado.left == None and encontrado.right != None):
+             print("A eliminar: ", encontrado.data)
